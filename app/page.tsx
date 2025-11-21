@@ -10,7 +10,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { useBackendStatus } from "@/hooks/useApi";
 import { useAppStore } from "@/stores/useAppStore";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_URL = 'https://gpt-shopping-backend-production.up.railway.app';
 
 export default function Home() {
   const router = useRouter();
