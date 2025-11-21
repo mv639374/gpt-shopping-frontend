@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useAppStore } from "@/stores/useAppStore";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_URL = 'https://gpt-shopping-backend-production.up.railway.app';
 
 export function useBackendStatus() {
   const { setBackendConnected } = useAppStore();
