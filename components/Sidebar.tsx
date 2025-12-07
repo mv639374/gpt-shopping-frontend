@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { BarChart3, Mail, MoreHorizontal, Settings } from "lucide-react";
-import { useAppStore } from "@/stores/useAppStore";
+import { BarChart3, Mail, MoreHorizontal, Settings, Link2 } from "lucide-react";
+import { useAppStore } from "@/store/useAppStore";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
@@ -13,6 +13,12 @@ const menuItems = [
     label: "Analytics",
     icon: BarChart3,
     path: "/dashboard/analytics",
+  },
+  {
+    id: "citations",
+    label: "Citation Analytics",
+    icon: Link2,
+    path: "/dashboard/citations",
   },
   {
     id: "contact",

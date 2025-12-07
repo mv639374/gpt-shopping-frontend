@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useAppStore } from "@/stores/useAppStore";
+import { useAppStore } from "@/store/useAppStore";
 import { useApi } from "@/hooks/useApi";
 import { MarketplaceSelector } from "@/components/MarketplaceSelector";
 import { KPICard } from "@/components/KPICard";

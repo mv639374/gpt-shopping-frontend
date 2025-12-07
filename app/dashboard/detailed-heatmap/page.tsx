@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { MarketplaceSelector } from "@/components/MarketplaceSelector";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
-import { useAppStore } from "@/stores/useAppStore";
+import { useAppStore } from "@/store/useAppStore";
 import { useApi } from "@/hooks/useApi";
 import type { DetailedHeatmapData } from "@/types";
 

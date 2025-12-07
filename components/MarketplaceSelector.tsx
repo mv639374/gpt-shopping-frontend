@@ -17,7 +17,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useAppStore } from "@/stores/useAppStore";
+import { useAppStore } from "@/store/useAppStore";
 import { useApi } from "@/hooks/useApi";
 
 export function MarketplaceSelector() {

@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useAppStore } from "@/stores/useAppStore";
+import { useAppStore } from "@/store/useAppStore";
 import { cn } from "@/lib/utils";
 
 export function StatusIndicator() {

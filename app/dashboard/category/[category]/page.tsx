@@ -28,7 +28,7 @@ import {
 import { MarketplaceSelector } from "@/components/MarketplaceSelector";
 import { KPICard } from "@/components/KPICard";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
-import { useAppStore } from "@/stores/useAppStore";
+import { useAppStore } from "@/store/useAppStore";
 import { useApi } from "@/hooks/useApi";
 import type { CategoryAnalytics } from "@/types";
 import { cn } from "@/lib/utils";
