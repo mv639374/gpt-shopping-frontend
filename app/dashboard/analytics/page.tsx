@@ -12,6 +12,7 @@ import { CompetitorThreatChart } from "@/components/CompetitorThreatChart";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { Eye, Trophy, TrendingUp, Target } from "lucide-react";
 import type { MarketplaceAnalytics, NoRankAnalysis, CompetitorThreatAnalysis } from "@/types";
+import { CitationAnalyticsView } from '@/components/citations/CitationAnalyticsView';
 
 export default function AnalyticsPage() {
   const { selectedMarketplace } = useAppStore();
@@ -171,6 +172,19 @@ export default function AnalyticsPage() {
           </div>
         </>
       ) : null}
+
+
+
+            {/* Add Citation Analytics Section */}
+      <section className="mt-12">
+        <div className="mb-6">
+          <h2 className="text-3xl font-bold">Citation Analytics</h2>
+          <p className="text-muted-foreground mt-2">
+            Deep dive into how citations influence Amazon's ranking in ChatGPT recommendations
+          </p>
+        </div>
+        <CitationAnalyticsView />
+      </section>
     </div>
   );
 }

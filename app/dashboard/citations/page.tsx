@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, Suspense } from 'react'
 import { useBrandStore } from '@/store/brandStore'
 import { useCitationMetrics } from '@/hooks/useCitationMetrics'
 import { useSourceCitations } from '@/hooks/useSourceCitations'
@@ -11,10 +11,7 @@ import { DomainCategoryPieChart } from '@/components/charts/DomainCategoryPieCha
 import { UnifiedSourceTable } from '@/components/charts/UnifiedSourceTable'
 import { Globe, Link as LinkIcon, Percent, Info, Loader2, Check } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import dynamic from 'next/dynamic'
-
-// Dynamically import App component with no SSR
-const AppComponent = dynamic(() => import('./App'), { ssr: false })
+import AmazonAnalytics from './AmazonAnalytics'
 
 export default function Citations() {
   const { currentBrandId, getCurrentBrand } = useBrandStore()
@@ -192,9 +189,9 @@ export default function Citations() {
                     <Loader2 className="h-5 w-5 text-primary animate-spin" />
                   )}
                   <span className="text-sm text-muted-foreground">{step.label}</span>
-                </div>
+        </div>
               ))}
-            </div>
+        </div>
           </CardContent>
         </Card>
       </div>
@@ -316,10 +313,10 @@ export default function Citations() {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Pie Chart */}
-          <DomainCategoryPieChart 
-            data={citationMetrics?.overall?.domainCategoryDistribution || []}
-            isLoading={citationMetricsLoading}
-          />
+              <DomainCategoryPieChart 
+                data={citationMetrics?.overall?.domainCategoryDistribution || []}
+                isLoading={citationMetricsLoading}
+              />
 
           {/* Statistics Card */}
           <TooltipProvider delayDuration={300}>
@@ -444,20 +441,23 @@ export default function Citations() {
         />
       </section>
 
-      {/* Separator */}
-      <div className="border-t border-border my-12"></div>
 
-      {/* GPT Shopping Analytics Section */}
-      <section id="gpt-shopping-section" className="space-y-5 scroll-mt-20">
-        <div className="flex items-center gap-2">
-          <div className="h-1 w-1 rounded-full bg-primary"></div>
-          <h2 className="text-lg font-semibold text-foreground">GPT Shopping Analytics</h2>
-        </div>
-        <p className="text-sm text-muted-foreground">
-          Analyze Amazon's performance across different product categories in GPT shopping responses.
-        </p>
-        <AppComponent />
-      </section>
+      {/* Amazon Analytics Section */}
+      <div className="mt-12 pt-8 border-t">
+        <Suspense fallback={
+          <div className="flex items-center justify-center h-64">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+          </div>
+        }>
+          <AmazonAnalytics />
+        </Suspense>
+      </div>
+
+
+
+
+      
     </div>
   )
 }
+
