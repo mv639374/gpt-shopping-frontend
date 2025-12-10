@@ -13,6 +13,16 @@ RUN npm ci
 # Copy application code
 COPY . .
 
+# Accept build arguments for Next.js public env vars
+ARG NEXT_PUBLIC_SUPABASE_URL
+ARG NEXT_PUBLIC_SUPABASE_SERVICE_KEY
+ARG NEXT_PUBLIC_API_URL
+
+# Set them as environment variables for the build
+ENV NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL
+ENV NEXT_PUBLIC_SUPABASE_SERVICE_KEY=$NEXT_PUBLIC_SUPABASE_SERVICE_KEY
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 # Build the application
 RUN npm run build
 
@@ -34,6 +44,7 @@ RUN npm ci --only=production
 # Copy built application from builder
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
+COPY --from=builder /app/next.config.* ./
 
 # Expose port
 EXPOSE 3000
